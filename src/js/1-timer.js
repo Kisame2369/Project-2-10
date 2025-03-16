@@ -9,6 +9,7 @@ const dayTimer = document.querySelector("[data-days]");
 const hoursTimer = document.querySelector("[data-hours]");
 const minutesTimer = document.querySelector("[data-minutes]");
 const secondsTimer = document.querySelector("[data-seconds]");
+const input = document.querySelector("#datetime-picker");
 
 let userSelectedDate;
 button.disabled = true;
@@ -52,6 +53,7 @@ function convertMs(ms) {
 
 function start() {
   button.disabled = true; 
+  input.disabled = true;
   const intervalID = setInterval(() => {
     const timeNow = Date.now();
     const timeDifference = userSelectedDate.getTime() - timeNow;
@@ -59,6 +61,7 @@ function start() {
     if (timeDifference <= 0) {
       clearInterval(intervalID);
       timeChange(0, 0, 0, 0);
+      input.disabled = false;
     } else {
       const timeSet = convertMs(timeDifference);
       timeChange(timeSet.days, timeSet.hours, timeSet.minutes, timeSet.seconds);
