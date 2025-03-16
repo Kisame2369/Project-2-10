@@ -26,7 +26,7 @@ const options = {
         title: "Error",
         message: "Please choose a date in the future",
         position: "topRight",
-        color: ""
+        color: "red"
       });
       button.disabled = true;
     } else {
